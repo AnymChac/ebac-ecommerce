@@ -1,0 +1,398 @@
+// Variables
+// Colocar variable para el color principal del texto (gris oscuro)
+$color-principal: #999;
+// Colocar variable para el color de fondo del encabezado (negro)
+$color-header-bg: #333;
+// Colocar variable para el color blanco
+$color-blanco: #FFF;
+// Colocar variable para la fuente principal
+$fuente-principal: "Fira Sans", sans-serif;
+// Colocar variable para el tamaño de fuente base
+$font-size-base: 15px;
+// Colocar variable para la sombra de caja común en el carrito
+$box-shadow-cart: -19px -1px 22px -15px rgba(0, 0, 0, 0.3);
+
+// Mixins
+// Crear mixin para centrar el contenido de la cabecera
+@mixin flex-center-between {
+  // Definir la visualización como flex
+  display: flex;
+  // Justificar el contenido al inicio y fin de la cabecera
+  justify-content: space-between;
+  // Alinear elementos verticalmente al centro
+  align-items: center;
+}
+
+// Crear mixin para el diseño de cuadrícula de productos
+@mixin product-grid {
+  // Definir la visualización como cuadrícula
+  display: grid;
+  // Definir columnas responsivas para la cuadrícula
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+// Crear mixin para los estilos del texto en el banner
+@mixin banner-text($font-size, $font-weight: 600) {
+  // Definir el ancho del elemento al 100%
+  width: 100%;
+  // Establecer el peso de la fuente
+  font-weight: $font-weight;
+  // Establecer el tamaño de la fuente
+  font-size: $font-size;
+  // Establecer el margen
+  margin: 10px;
+}
+
+// Estilos generales del cuerpo
+body {
+    // Definir el ancho del cuerpo al 100%
+    width: 100%;
+    // Usar variable para el tamaño de fuente base
+    font-size: $font-size-base;
+    // Definir el peso de la fuente
+    font-weight: 300;
+    // Usar variable para el color principal
+    color: $color-principal;
+    // Usar variable para la fuente principal
+    font-family: $fuente-principal;
+    //margen
+    margin: auto;
+}
+
+// Estilos para imágenes (extend para reutilización)
+%imagen-base {
+    // Definir el ancho de la imagen
+    width: 100px;
+}
+
+img {
+    // Extender estilos de imagen base
+    @extend %imagen-base;
+}
+
+// Estilos del encabezado con nesting y mixin
+header {
+    // Definir el ancho del encabezado al 100%
+    width: 100%;
+    // Definir padding
+    padding: 10px 10px;
+    // Usar variable para el color de fondo
+    background-color: $color-header-bg;
+    // Aplicar mixin para el diseño flex
+    @include flex-center-between;
+    // Incluir padding y borde en el ancho/alto total
+    box-sizing: border-box;
+
+    // Estilos para el ícono dentro del encabezado
+    i {
+        // Definir el ancho del ícono
+        width: 35px;
+        // Establecer el cursor de la cabecera
+        cursor: pointer;
+        // Definir la visualización en línea
+        display: inline-block;
+
+        // Estilos para la imagen dentro del ícono
+        img {
+            // Definir el ancho de la imagen al 100%
+            width: 100%;
+        }
+    }
+}
+
+// Estilos del banner
+.banner {
+  // Definir el ancho del banner al 100%
+  width: 100%;
+  // Definir padding
+  padding: 40px 0;
+  // Alinear texto al centro
+  text-align: center;
+  // Definir imagen de fondo y sus propiedades
+  background-image: url("../img/banner.jpg");
+  // Evitar la repetición del fondo
+  background-repeat: no-repeat;
+  // Cubrir el área del banner con la imagen
+  background-size: cover;
+
+  // Estilos para el encabezado (h2) en el banner
+  h2 {
+    // Aplicar mixin para texto grande
+    @include banner-text(30px);
+  }
+
+  // Estilos para el párrafo (p) en el banner
+  p {
+    // Definir el ancho del párrafo
+    width: 350px;
+    // Centrar el párrafo horizontalmente
+    margin: 0 auto;
+    // Aplicar mixin para texto pequeño con peso normal y opacidad
+    @include banner-text(25px, 300);
+    // Ajustar la opacidad
+    opacity: 0.7;
+  }
+}
+
+// Estilos de la sección de productos
+.products {
+  // Definir el ancho de la sección
+  width: 80%;
+  // Centrar la sección horizontalmente
+  margin: 0 auto;
+  // Definir padding
+  padding: 20px;
+  // Incluir padding y borde en el ancho/alto total
+  box-sizing: border-box;
+  // Aplicar mixin de cuadrícula de productos
+  @include product-grid;
+
+  // Estilos para cada artículo de producto
+  article {
+    // Establecer el cursor
+    cursor: pointer;
+    // Alinear texto al centro
+    text-align: center;
+  }
+
+  // Estilos para la imagen del producto
+  img {
+    // Definir el ancho de la imagen
+    width: 200px;
+    // Definir margen inferior
+    margin-bottom: 15px;
+  }
+
+  // Estilos para el encabezado (h2) del producto
+  h2 {
+    // Definir el peso de la fuente
+    font-weight: 500;
+    // Definir el tamaño de la fuente
+    font-size: 17px;
+    // Definir margen inferior
+    margin-bottom: 5px;
+  }
+
+  // Estilos para el párrafo (p) del producto
+  p {
+    // Definir el peso de la fuente
+    font-weight: 300;
+    // Usar variable para el tamaño de fuente base
+    font-size: $font-size-base;
+  }
+}
+
+// Estilos del carrito
+.cart {
+  // Definir el ancho del carrito
+  width: 300px;
+  // Usar variable para el color de fondo
+  background-color: $color-blanco;
+  // Definir padding
+  padding: 25px;
+  // Incluir padding y borde en el ancho/alto total
+  box-sizing: border-box;
+  // Definir la altura al 100%
+  height: 100%;
+  // Posicionamiento fijo para el carrito
+  position: fixed;
+  // Iniciar fuera de la vista a la derecha
+  right: -100%;
+  // Definir la posición superior
+  top: 100px;
+  // Usar variable para la sombra de caja
+  box-shadow: $box-shadow-cart;
+
+  // Estilos para el encabezado (h2) del carrito
+  h2 {
+    // Definir el ancho al 100%
+    width: 100%;
+    // Alinear texto al centro
+    text-align: center;
+    // Definir el tamaño de la fuente
+    font-size: 20px;
+    // Definir el peso de la fuente
+    font-weight: 600;
+    // Definir padding
+    padding: 25px 0;
+    // Incluir padding y borde en el ancho/alto total
+    box-sizing: border-box;
+  }
+
+  // Estilos para los divisores (elementos del carrito)
+  div {
+    // Definir borde inferior
+    border-bottom: 1px solid $color-header-bg;
+    // Aplicar mixin para el diseño flex
+    @include flex-center-between;
+    // Definir padding
+    padding: 15px;
+    // Incluir padding y borde en el ancho/alto total
+    box-sizing: border-box;
+
+    // Estilos para la imagen del producto en el carrito
+    img {
+      // Definir el ancho de la imagen
+      width: 60px;
+    }
+
+    // Estilos para el tercer párrafo (precio/cantidad)
+    p:nth-child(3) {
+      // Definir el peso de la fuente
+      font-weight: 500;
+    }
+
+    // Estilos para el ícono de eliminación en el carrito
+    i {
+      // Definir el ancho del ícono
+      width: 20px;
+      // Establecer el cursor
+      cursor: pointer;
+    }
+  }
+
+  // Estilos para el ícono de eliminación (extend para reutilización)
+  .delete-icon {
+    // Definir el ancho del ícono al 100%
+    width: 100%;
+  }
+}
+
+// Media Queries Responsivas
+// Crear mixin para manejar el punto de quiebre de 820px
+@mixin media-tablet {
+  @media (max-width: 820px) {
+    // Aplicar estilos específicos de tableta aquí
+    @content;
+  }
+}
+
+// Crear mixin para manejar el punto de quiebre de 480px
+@mixin media-mobile {
+  @media (max-width: 480px) {
+    // Aplicar estilos específicos de móvil aquí
+    @content;
+  }
+}
+
+// Aplicación de media queries con mixins
+@include media-tablet {
+  // Anidar estilos específicos para la cabecera
+  header {
+      // Redefinir padding
+      padding: 10px;
+
+      // Anidar estilos para la imagen del encabezado
+      > img {
+          // Redefinir el ancho de la imagen
+          width: 60px;
+      }
+
+      // Anidar estilos para el ícono
+      i {
+          // Redefinir el ancho del ícono
+          width: 30px;
+      }
+  }
+
+  // Anidar estilos específicos para los productos
+  .products {
+    // Redefinir las columnas de la cuadrícula
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    // Anidar estilos para la imagen del producto
+    img {
+      // Redefinir el ancho de la imagen
+      width: 150px;
+    }
+  }
+
+  // Anidar estilos específicos para el carrito
+  .cart {
+    // Redefinir el ancho del carrito
+    width: 400px;
+    // Redefinir la posición superior
+    top: 80px;
+  }
+}
+
+@include media-mobile {
+ 
+    // Anidar estilos específicos para el banner
+  .banner {
+    // Redefinir padding
+    padding: 10px;
+
+    // Anidar estilos para el encabezado (h2)
+    h2 {
+      // Redefinir el tamaño de la fuente
+      font-size: 18px;
+    }
+
+    // Anidar estilos para el párrafo (p)
+    p {
+      // Redefinir el tamaño de la fuente
+      font-size: 16px;
+    }
+    box-sizing: border-box;
+  }
+
+    // Anidar estilos específicos para los productos
+  .products {
+    // Redefinir las columnas de la cuadrícula a una sola columna
+    grid-template-columns: 1fr;
+    // Redefinir padding
+    padding: 10px;
+
+    // Anidar estilos para la imagen del producto
+    img {
+      // Redefinir el ancho de la imagen al 100%
+      width: 100%;
+      // Definir un ancho máximo
+      max-width: 200px;
+      // Redefinir margen inferior
+      margin-bottom: 10px;
+    }
+
+    // Anidar estilos para el encabezado (h3) y párrafo (p)
+    h3, p {
+      // Redefinir padding
+      padding: 0 10px;
+    }
+  }
+
+    // Anidar estilos específicos para el carrito
+  .cart {
+    // Redefinir el ancho del carrito al 100%
+    width: 100%;
+    // Quitar la sombra de caja
+    box-shadow: none;
+
+    // Anidar estilos para el encabezado (h2)
+    h2 {
+      // Redefinir padding
+      padding: 15px 0;
+    }
+
+    // Anidar estilos para los divisores (elementos del carrito)
+    div {
+      // Cambiar la dirección flex a columna
+      flex-direction: column;
+      // Alinear elementos al centro
+      align-items: center;
+    }
+
+    // Anidar estilos para la imagen
+    img {
+      // Redefinir el ancho de la imagen
+      width: 100px;
+    }
+
+    // Anidar estilos para el párrafo (p)
+    p {
+      // Quitar el margen
+      margin: 0;
+    }
+  }
+}
+
