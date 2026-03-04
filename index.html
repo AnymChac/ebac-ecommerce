@@ -6,52 +6,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
+    <script src="js/function.js"></script>
     <title>Tienda Xbox</title>
 </head>
 <body>
     <header>
-        <i><img src="img/menu.png" alt="Icono Menu"></i>
+        <i id="open-menu-btn" class="hover-effect"><img src="img/menu.png" alt="Icono Menu"></i>
         <img src="img/XboxLogo.png" alt="Icono Empresa">
-        <i><img src="img/cart.png" alt="Icono Carrito"></i>
+        <div class="cart-icon-container">
+            <i id="open-cart-btn" class="hover-effect"><img src="img/cart.png" alt="Icono Carrito"></i>
+            <span id="cart-badge" class="badge">0</span>
+        </div>
     </header>
+
+    <aside id="side-menu" class="side-menu">
+        <div class="menu-header">
+            <h2>MENÚ</h2>
+            <i id="close-menu-btn" class="hover-effect"><img src="img/delete.png" alt="Cerrar Menu"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Juegos</a></li>
+                <li><a href="#">Consolas</a></li>
+                <li><a href="#">Suscripciones</a></li>
+            </ul>
+        </nav>
+    </aside>
 
     <main>
         <section class="banner">
             <h2>JUEGOS</h2>
-            <p>Conoce nuestros lanzaminetos recientes</p>
+            <p>Conoce nuestros lanzamientos recientes</p>
         </section>
 
         <section class="products">
             <article>
-                <img src="img/GearsOfWar.jpg" alt="Gears Of War">
+                <img src="img/GearsOfWar.jpg" alt="Gears Of War" class="hover-effect">
                 <h3>Gears Of War</h3>
                 <p>$1,100.00</p>
+                <button class="add-to-cart hover-effect" data-name="Gears Of War" data-price="$1,100.00" data-img="img/GearsOfWar.jpg">Agregar al carrito</button>
             </article>
 
             <article>
-                <img src="img/Halo.jpg" alt="Halo">
+                <img src="img/Halo.jpg" alt="Halo" class="hover-effect">
                 <h3>Halo Infinite</h3>
                 <p>$1,400.00</p>
+                <button class="add-to-cart hover-effect" data-name="Halo Infinite" data-price="$1,400.00" data-img="img/Halo.jpg">Agregar al carrito</button>
             </article>
 
             <article>
-                <img src="img/Forza.webp" alt="Forza">
+                <img src="img/Forza.webp" alt="Forza" class="hover-effect">
                 <h3>Forza Horizon 5</h3>
                 <p>$1,400.00</p>
+                <button class="add-to-cart hover-effect" data-name="Forza Horizon 5" data-price="$1,400.00" data-img="img/Forza.webp">Agregar al carrito</button>
             </article>
         </section>
 
-        <section class="cart">
-            <h2>CARRITO</h2>
-            <div>
-                <img src="img/GearsOfWar.jpg" alt="Carrito">
-                <p>Gears Of War</p>
-                <p>$1,100.00</p>
-                <i><img src="img/delete.png" alt="Icono Quitar" class="delete-icon"></i>
+        <section id="cart-menu" class="cart">
+            <div class="cart-header">
+                <h2>CARRITO</h2>
+                <i id="close-cart-btn" class="hover-effect"><img src="img/delete.png" alt="Cerrar Carrito" style="width: 25px;"></i>
             </div>
+            <div id="cart-items-container">
+                </div>
         </section>
     </main>
     
+    <script src="js/script.js"></script>
 </body>
 </html>
