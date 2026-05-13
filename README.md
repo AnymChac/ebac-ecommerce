@@ -3,7 +3,7 @@
 [![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)](https://github.com/AnymChac/ebac-ecommerce)
 
 ## 📝 Descripción
-Este proyecto es una plataforma de tienda en línea diseñada para simular la experiencia completa de un usuario en un entorno de comercio electrónico. Se centra en una interfaz intuitiva y una navegación fluida, permitiendo gestionar un catálogo de productos y un flujo de compra funcional.
+Este proyecto es una plataforma de tienda en línea diseñada para simular la experiencia completa de un usuario en un entorno de comercio electrónico. Se centra en una interfaz intuitiva y una navegación fluida, permitiendo gestionar un catálogo de productos.
 
 Desarrollado como parte de mi formación técnica, este repositorio demuestra habilidades en la estructuración de aplicaciones web comerciales y manejo de lógica de negocio en el frontend.
 
